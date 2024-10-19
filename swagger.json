@@ -5,10 +5,10 @@
     "description": "Accounts API",
     "version": "1.0.0"
   },
-  "host": "localhost.com",
+  "host": "cse341-l2-personal.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/api-docs": {

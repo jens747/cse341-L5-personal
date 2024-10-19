@@ -7,10 +7,10 @@ const doc = {
     title: "Accounts API",
     description: "Accounts API"
   },
-  // host: 'cse341-l2-personal.onrender.com',
-  // schemes: ['https']
-  host: "localhost.com", 
-  schemes: ["http"]
+  host: 'cse341-l2-personal.onrender.com',
+  schemes: ['https']
+  // host: "localhost:8080", 
+  // schemes: ["http"]
 };
 
 const outputFile = "./swagger.json";

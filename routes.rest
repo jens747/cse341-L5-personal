@@ -3,16 +3,16 @@
 GET http://localhost:8080/accounts 
 
 ### Get account by id 
-GET http://localhost:8080/accounts/66f474de32ef53eef1d2d7f7 
+GET http://localhost:8080/accounts/671424015a93e1e869707616 
 
 ### 
-GET http://localhost:8080/accounts/66f474f732ef53eef1d2d7f9 
+GET http://localhost:8080/accounts/671424015a93e1e869707617 
 
 ### 
-GET http://localhost:8080/accounts/66f4757832ef53eef1d2d7fb
+GET http://localhost:8080/accounts/671424015a93e1e869707618
 
 ### Create contact 
-POST http://localhost:8080/add HTTP/1.1
+POST http://localhost:8080/accounts HTTP/1.1
 content-type: application/json 
 
 {
@@ -27,7 +27,7 @@ content-type: application/json
 }
 
 ### Update contact 
-PUT http://localhost:8080/put/66fdd69bf3b0affe7e09fe13 HTTP/1.1
+PUT http://localhost:8080/accounts/66fdd69bf3b0affe7e09fe13 HTTP/1.1
 content-type: application/json
 
 {
@@ -42,7 +42,7 @@ content-type: application/json
 }
 
 ### Delete contact 
-DELETE http://localhost:8080/delete/66fdd69bf3b0affe7e09fe13 HTTP/1.1
+DELETE http://localhost:8080/accounts/67142cce809cf57085f52707 HTTP/1.1
 
 // PRODUCTION Deploy 
 ### GET https://cse341-l2-personal.onrender.com/contacts 

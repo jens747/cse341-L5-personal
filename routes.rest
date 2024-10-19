@@ -44,22 +44,26 @@ content-type: application/json
 ### Delete contact 
 DELETE http://localhost:8080/accounts/67142cce809cf57085f52707 HTTP/1.1
 
-// PRODUCTION Deploy 
-### GET https://cse341-l2-personal.onrender.com/contacts 
-### GET https://cse341-l2-personal.onrender.com/contacts/66f474de32ef53eef1d2d7f7 
+### PRODUCTION Deploy 
+GET https://cse341-l5-personal.onrender.com/accounts/ 
+### Get by id
+GET https://cse341-l5-personal.onrender.com/accounts/671436d0889a622f95bad121 
 ### GET https://cse341-l2-personal.onrender.com/contacts/66f474f732ef53eef1d2d7f9 
 ### GET https://cse341-l2-personal.onrender.com/contacts/66f4757832ef53eef1d2d7fb
 
 ### Create contact 
-POST https://cse341-l2-personal.onrender.com/contacts/add HTTP/1.1
+POST https://cse341-l5-personal.onrender.com/accounts/ HTTP/1.1
 content-type: application/json 
 
 {
-  "firstName":"Karen",
-  "lastName":"Filippelli",
-  "email":"kfilippelli@dundermifflinpaper.biz",
-  "favoriteColor":"blue",
-  "birthday":"1979-02-25"
+  "firstName": "Kevin",
+  "lastName": "Malone",
+  "email": "kmalone@dundermifflinpaper.biz",
+  "street": "#2 Scrantonicity Street",
+  "city": "Scranton",
+  "state": "PA",
+  "zip": "18512",
+  "phone": "570-555-1220"
 }
 
 ### Update contact 

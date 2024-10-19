@@ -5,7 +5,7 @@
     "description": "Accounts API",
     "version": "1.0.0"
   },
-  "host": "cse341-l2-personal.onrender.com",
+  "host": "cse341-l5-personal.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"

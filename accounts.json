@@ -1,0 +1,55 @@
+[{
+  "firstName": "Michael", 
+  "lastName": "Scott", 
+  "email": "mscott@dundermifflinpaper.biz", 
+  "street": "008 Midnight Lane", 
+  "city": "Scranton", 
+  "state": "PA", 
+  "zip": "18512", 
+  "phone": "570-555-1212"
+},{
+  "firstName": "Dwight", 
+  "lastName": "Schrute", 
+  "email": "dschrute@dundermifflinpaper.biz", 
+  "street": "321 Beetdigger Way", 
+  "city": "Honesdale", 
+  "state": "PA", 
+  "zip": "18431", 
+  "phone": "570-555-1213"
+},{
+  "firstName": "Jim", 
+  "lastName": "Halpert", 
+  "email": "jhalpert@dundermifflinpaper.biz", 
+  "street": "244 Oak Drive", 
+  "city": "Scranton", 
+  "state": "PA", 
+  "zip": "18512", 
+  "phone": "570-555-1214"
+},{
+  "firstName": "Oscar", 
+  "lastName": "Martinez", 
+  "email": "omartinez@dundermifflinpaper.biz", 
+  "street": "", 
+  "city": "Scranton", 
+  "state": "PA", 
+  "zip": "18512", 
+  "phone": "570-555-1215"
+},{
+  "firstName": "Andy", 
+  "lastName": "Bernard", 
+  "email": "abernard@dundermifflinpaper.biz", 
+  "street": "", 
+  "city": "Scranton", 
+  "state": "PA", 
+  "zip": "18512", 
+  "phone": "570-555-1216"
+},{
+  "firstName": "Pam", 
+  "lastName": "Beesly", 
+  "email": "pbeesly@dundermifflinpaper.biz", 
+  "street": "39th Artesian Road", 
+  "city": "Scranton", 
+  "state": "PA", 
+  "zip": "18512", 
+  "phone": "570-555-1217"
+}]

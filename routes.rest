@@ -1,0 +1,77 @@
+// LOCALHOST 
+### Get all accounts 
+GET http://localhost:8080/accounts 
+
+### Get account by id 
+GET http://localhost:8080/accounts/66f474de32ef53eef1d2d7f7 
+
+### 
+GET http://localhost:8080/accounts/66f474f732ef53eef1d2d7f9 
+
+### 
+GET http://localhost:8080/accounts/66f4757832ef53eef1d2d7fb
+
+### Create contact 
+POST http://localhost:8080/add HTTP/1.1
+content-type: application/json 
+
+{
+  "firstName":"Karen",
+  "lastName":"Filippelli",
+  "email":"kfilippelli@dundermifflinpaper.biz",
+  "street": "39th Artesian Road", 
+  "city": "Scranton", 
+  "state": "PA", 
+  "zip": "18512", 
+  "phone": "570-555-1227"
+}
+
+### Update contact 
+PUT http://localhost:8080/put/66fdd69bf3b0affe7e09fe13 HTTP/1.1
+content-type: application/json
+
+{
+  "firstName":"Holly", 
+  "lastName":"Scott",
+  "email":"hscott@dundermifflinpaper.biz", 
+  "street": "39th Artesian Road", 
+  "city": "Scranton", 
+  "state": "PA", 
+  "zip": "18512", 
+  "phone": "570-555-1227"
+}
+
+### Delete contact 
+DELETE http://localhost:8080/delete/66fdd69bf3b0affe7e09fe13 HTTP/1.1
+
+// PRODUCTION Deploy 
+### GET https://cse341-l2-personal.onrender.com/contacts 
+### GET https://cse341-l2-personal.onrender.com/contacts/66f474de32ef53eef1d2d7f7 
+### GET https://cse341-l2-personal.onrender.com/contacts/66f474f732ef53eef1d2d7f9 
+### GET https://cse341-l2-personal.onrender.com/contacts/66f4757832ef53eef1d2d7fb
+
+### Create contact 
+POST https://cse341-l2-personal.onrender.com/contacts/add HTTP/1.1
+content-type: application/json 
+
+{
+  "firstName":"Karen",
+  "lastName":"Filippelli",
+  "email":"kfilippelli@dundermifflinpaper.biz",
+  "favoriteColor":"blue",
+  "birthday":"1979-02-25"
+}
+
+### Update contact 
+PUT https://cse341-l2-personal.onrender.com/contacts/put/66fdd69bf3b0affe7e09fe13 HTTP/1.1
+content-type: application/json
+
+{
+  "firstName":"Holly", 
+  "lastName":"Scott",
+  "email":"hscott@dundermifflinpaper.biz", "favoriteColor":"blue",
+  "birthday":"1972-03-03"
+}
+
+### Delete contact 
+DELETE https://cse341-l2-personal.onrender.com/contacts/delete/66fdd69bf3b0affe7e09fe13 HTTP/1.1

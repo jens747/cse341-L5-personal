@@ -11,9 +11,13 @@ const cors = require("cors");
 
 // import mogoDB module
 const mongodb = require("./db/accounts");
+const catchUncaughtExceptions = require("./middleware/unhandledErrors");
 
 // initialize the express app
 const app = express();
+
+// enable loggers
+app.use(httpLogger);
 
 // tell server to listen on port 8080
 const port = process.env.PORT || 8080;
@@ -31,12 +35,11 @@ app.use(express.json());
 // enable cors
 app.use(cors());
 
-// enable loggers
-app.use(logger);
-app.use(httpLogger);
-
 // Response for the site home page
-app.use("/", require("./routes"));                          
+app.use("/", require("./routes"));
+
+// Catch all uncaught exceptions
+catchUncaughtExceptions();
 
 
 mongodb.initDb((err, mongodb) => {

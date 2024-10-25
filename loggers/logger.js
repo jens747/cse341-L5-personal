@@ -1,6 +1,7 @@
 // Import the Winston library for logs, transports, & formats
 const winston = require("winston");
 // const Logsene = require('winston-logsene');
+const path = require("path");
 
 // Configure logging options
 const options = {
@@ -29,7 +30,7 @@ const options = {
   file: {
     level: "debug", 
     // Path to log file
-    filename: "../logs/debug.log",
+    filename: path.join(__dirname, "../logs/debug.log"),
     handleExceptions: true, 
     json: true, 
     // Max size of each log file is 5MB

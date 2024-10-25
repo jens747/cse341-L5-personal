@@ -2,6 +2,10 @@ const express = require("express");
 
 // const path = require("path");
 
+// Set up loggers
+const logger = require("./loggers/logger");
+const httpLogger = require("./loggers/httpLogger");
+
 // allow external domains to access server
 const cors = require("cors");
 
@@ -26,6 +30,10 @@ app.use(express.json());
 
 // enable cors
 app.use(cors());
+
+// enable loggers
+app.use(logger);
+app.use(httpLogger);
 
 // Response for the site home page
 app.use("/", require("./routes"));                          

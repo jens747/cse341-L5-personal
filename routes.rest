@@ -18,7 +18,7 @@ content-type: application/json
 {
   "firstName":"Karen",
   "lastName":"Filippelli",
-  "email":"kfilippelli@dundermifflinpaper.biz",
+  "email":"kfilippelli@dundermifflinpaper",
   "street": "39th Artesian Road", 
   "city": "Scranton", 
   "state": "PA", 
@@ -41,8 +41,38 @@ content-type: application/json
   "phone": "570-555-1227"
 }
 
+### Update Account 
+PUT http://localhost:8080/accounts/671424015a93e1e869707616 HTTP/1.1
+content-type: application/json
+
+{
+  "firstName":"Michael", 
+  "lastName":"Scott",
+  "email":"mscott@dundermifflinpaper.biz", 
+  "street": "39th Artesian Road", 
+  "city": "Scranton", 
+  "state": "PA", 
+  "zip": "18512", 
+  "phone": "570-555-1227"
+}
+
+### Update Account 
+PUT http://localhost:8080/accounts/671424015a93e1e869707616 HTTP/1.1
+content-type: application/json
+
+{
+  "firstName":"Michael", 
+  "lastName":"Scott",
+  "email":"mscott@dundermifflinpaper.biz", 
+  "street": "39th Artesian Road", 
+  "city": "Aspen", 
+  "state": "CO", 
+  "zip": "81612", 
+  "phone": "570-555-1227"
+}
+
 ### Delete contact 
-DELETE http://localhost:8080/accounts/67142cce809cf57085f52707 HTTP/1.1
+DELETE http://localhost:8080/accounts/671987eaafdd1622fd041ab4 HTTP/1.1
 
 ### PRODUCTION Deploy 
 GET https://cse341-l5-personal.onrender.com/accounts/ 

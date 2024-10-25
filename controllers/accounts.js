@@ -1,5 +1,7 @@
 const mongodb = require("../db/accounts");
+// const mongoose = require("mongoose");
 const ObjectId = require("mongodb").ObjectId;
+// const Account = require("../db/mongoose");
 
 const getAllRecords = async (req, res, next) => {
   try {
@@ -30,28 +32,41 @@ const getAllRecords = async (req, res, next) => {
    next: callback to move to the next middleware in chain */
 const getRecordById = async (req, res, next) => {
   /* Converts the id from the requesting URL into a MongoDB 
-     ObjectId, I.E.: /contacts/:id */
+    ObjectId, I.E.: /contacts/:id */
   const userId = new ObjectId(req.params.id);
+
+  // Test the ID to see if it is a valid MongoDB ObjectID
+  if (!ObjectId.isValid(userId)) {
+    return res.status(400).json({ error: "Invalid MongoDB ID" });
+  }
+    
   try {
-    /* Get reference to the connectd MongoDB database 
+    /* Get reference to the connected MongoDB database 
        instance so it can be queried */
     const db = mongodb.getDb();
     
     // Access the accounts collection within the database
-    const result = await db.collection("accounts");
+    const result = await db
+      .collection("accounts")
+      .findOne({ _id: userId });
+
+    if (!result) {
+      return res.status(404).json({ error: "Search failed. No records available. "});
+    }
+
     // Query Contacts for a record with a matching id
-    const id = await result.find({ _id: userId });
+    // const id = await result.find({ _id: userId });
+
     /* MongoDB returns a cursor, which is an iterator. 
        This converts the cursor returned by find() into 
        a data array  */
-    const data = await id.toArray();
-    // console.log("Data: ", data);
+    // const data = await result.toArray();
 
     // Indicates that the response will be in JSON
     res.setHeader("Content-Type", "application/json");
     /* Sends successful HTTP status code (200), selects 
        the first document in the array */
-    res.status(200).json(data[0]);
+    res.status(200).json(result);
   } catch (err) {
     // Sends HTTP 500 (Internal Server Error), if error 
     res.status(500).json({err: "An error occurred while fetching data."});
@@ -83,12 +98,18 @@ const postRecord = async (req, res, next) => {
 }
 
 const putRecord = async (req, res, next) => {
+  // Convert id from string into a MongoDB ObjectId
+  const userId = req.params.id;
+
+  // Test the ID to see if it is a valid MongoDB ObjectID
+  if (!ObjectId.isValid(userId)) {
+    return res.status(400).json({ error: "Invalid MongoDB ID" });
+  }
+
   try {
     /* Get reference to the connectd MongoDB database 
       instance so it can be queried */
     const db = mongodb.getDb();
-    // Convert id from string into a MongoDB ObjectId
-    const userId = new ObjectId(req.params.id);
 
     // account object values are updated by req.body
     const account = {
@@ -103,11 +124,17 @@ const putRecord = async (req, res, next) => {
     }
     
     // Access the accounts collection within the database
-    const result = await db
-      .collection("accounts")
-      /* Replace data in selected _id with data in contacts 
-         object, returns result.modifiedCount status */
-      .replaceOne({ _id: userId }, account);
+    const collection = db.collection("accounts");
+
+    const record = await collection.findOne({ _id: new ObjectId(userId) });
+
+    if (!record) {
+      return res.status(404).json({ error: "No records available to update. "});
+    }
+      
+    /* Replace data in selected _id with data in contacts 
+       object, returns result.modifiedCount status */
+    const result = await collection.replaceOne({ _id: new ObjectId(userId) }, account);
     
     // modifiedCount checks to see if document was modified
     if (result.modifiedCount > 0) {
@@ -123,26 +150,32 @@ const putRecord = async (req, res, next) => {
 }
 
 const deleteRecord = async (req, res, next) => {
+  // Convert the id from the URL into a Mongo ObjectId
+  const id = req.params.id;
+
+  // Run a check to see if the ID is valid
+  if (!ObjectId.isValid(id)) {
+    return res.status(400).json({ error: "Invalid ID" });
+  }
+
   try {
     /* Get reference to the connectd MongoDB database 
-       instance so it can be queried */
+      instance so it can be queried */
     const db = mongodb.getDb();
-    // Convert the id from the URL into a Mongo ObjectId
-    const id = req.params.id;
-
-    // Run a check to see if the ID is valid
-    if (!ObjectId.isValid(id)) {
-      return res.status(400).json({ message: "Invalid ID" });
-    }
-
     // Access the accounts collection within the database
     const result = await db
       .collection("accounts")
-      .deleteOne({ _id: new ObjectId(id) });
+      .findOne({ _id: new ObjectId(id) });
+
+    if (!result) {
+      return res.status(404).json({ error: "No records available to delete. "});
+    }
+      
+    result.deleteOne({ _id: new ObjectId(id) });
 
     if (result.deletedCount > 0) {
       // Success response
-      res.status(204).json({ message: "Record deleted successfully" });
+      res.status(204).json({ message: "Record deleted successfully." });
     } else {
       res.status(404).json({ message: "Record not found" });
     }

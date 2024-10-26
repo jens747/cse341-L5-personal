@@ -18,8 +18,8 @@ content-type: application/json
 {
   "firstName":"Karen",
   "lastName":"Filippelli",
-  "email":"kfilippelli@dundermifflinpaper",
-  "street": "39th Artesian Road", 
+  "email":"kfilippelli@dundermifflinpaper.biz",
+  "street": "123 Next Lane", 
   "city": "Scranton", 
   "state": "PA", 
   "zip": "18512", 
@@ -34,11 +34,11 @@ content-type: application/json
   "firstName":"Holly", 
   "lastName":"Scott",
   "email":"hscott@dundermifflinpaper.biz", 
-  "street": "39th Artesian Road", 
-  "city": "Scranton", 
-  "state": "PA", 
-  "zip": "18512", 
-  "phone": "570-555-1227"
+  "street": "1012 Resource Road", 
+  "city": "Nashua", 
+  "state": "NH", 
+  "zip": "03063", 
+  "phone": "603-555-1327"
 }
 
 ### Update Account 
@@ -49,11 +49,11 @@ content-type: application/json
   "firstName":"Michael", 
   "lastName":"Scott",
   "email":"mscott@dundermifflinpaper.biz", 
-  "street": "39th Artesian Road", 
+  "street": "6171 W Dundee Dr", 
   "city": "Scranton", 
   "state": "PA", 
   "zip": "18512", 
-  "phone": "570-555-1227"
+  "phone": "570-555-1212"
 }
 
 ### Update Account 
@@ -64,15 +64,15 @@ content-type: application/json
   "firstName":"Michael", 
   "lastName":"Scott",
   "email":"mscott@dundermifflinpaper.biz", 
-  "street": "39th Artesian Road", 
-  "city": "Aspen", 
+  "street": "#2W Beginnings Blvd", 
+  "city": "Boulder", 
   "state": "CO", 
   "zip": "81612", 
-  "phone": "570-555-1227"
+  "phone": "570-555-1212"
 }
 
 ### Delete contact 
-DELETE http://localhost:8080/accounts/671987eaafdd1622fd041ab4 HTTP/1.1
+DELETE http://localhost:8080/accounts/671d72aaad8fce9667a6aea2 HTTP/1.1
 
 ### PRODUCTION Deploy 
 GET https://cse341-l5-personal.onrender.com/accounts/ 
@@ -86,26 +86,44 @@ POST https://cse341-l5-personal.onrender.com/accounts/ HTTP/1.1
 content-type: application/json 
 
 {
-  "firstName": "Kevin",
-  "lastName": "Malone",
-  "email": "kmalone@dundermifflinpaper.biz",
-  "street": "#2 Scrantonicity Street",
+  "firstName": "Ryan",
+  "lastName": "Howard",
+  "email": "rhoward@dundermifflinpaper.biz",
+  "street": "272 Temp Boss Boulevard",
   "city": "Scranton",
   "state": "PA",
   "zip": "18512",
-  "phone": "570-555-1220"
+  "phone": "570-555-1222"
+}
+
+POST https://cse341-l5-personal.onrender.com/accounts/ HTTP/1.1
+content-type: application/json
+
+{
+  "firstName":"Holly", 
+  "lastName":"Flax",
+  "email":"hflax@dundermifflinpaper.biz", 
+  "street": "1012 Resource Road", 
+  "city": "Nashua", 
+  "state": "NH", 
+  "zip": "03063", 
+  "phone": "603-555-1327"
 }
 
 ### Update contact 
-PUT https://cse341-l2-personal.onrender.com/contacts/put/66fdd69bf3b0affe7e09fe13 HTTP/1.1
+PUT https://cse341-l5-personal.onrender.com/contacts/put/66fdd69bf3b0affe7e09fe13 HTTP/1.1
 content-type: application/json
 
 {
   "firstName":"Holly", 
   "lastName":"Scott",
-  "email":"hscott@dundermifflinpaper.biz", "favoriteColor":"blue",
-  "birthday":"1972-03-03"
+  "email":"hscott@dundermifflinpaper.biz", 
+  "street": "#2W Beginnings Blvd", 
+  "city": "Boulder", 
+  "state": "CO", 
+  "zip": "81612", 
+  "phone": "603-555-1327"
 }
 
 ### Delete contact 
-DELETE https://cse341-l2-personal.onrender.com/contacts/delete/66fdd69bf3b0affe7e09fe13 HTTP/1.1
+DELETE https://cse341-l5-personal.onrender.com/contacts/delete/66fdd69bf3b0affe7e09fe13 HTTP/1.1

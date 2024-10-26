@@ -3,6 +3,10 @@ const mongodb = require("../db/accounts");
 const ObjectId = require("mongodb").ObjectId;
 // const Account = require("../db/mongoose");
 
+// Error Handling
+const Api404Error = require("../middleware/api404Error");
+const httpStatusCodes = require("../middleware/httpStatusCodes");
+
 const getAllRecords = async (req, res, next) => {
   try {
     // get the MongoDB database instance
@@ -129,7 +133,8 @@ const putRecord = async (req, res, next) => {
     const record = await collection.findOne({ _id: new ObjectId(userId) });
 
     if (!record) {
-      return res.status(404).json({ error: "No records available to update. "});
+      // return res.status(404).json({ error: "No records available to update. "});
+      throw new Api404Error("Not found", httpStatusCodes.NOT_FOUND, `User with id: ${req.params.id} not found.`);
     }
       
     /* Replace data in selected _id with data in contacts 
@@ -144,8 +149,13 @@ const putRecord = async (req, res, next) => {
       res.status(500).json({err: "An error occurred while updating record."});
     }
   } catch (err) {
-    // Sends HTTP 500 (Internal Server Error), if error 
-    res.status(500).json({err: "Internal Server Error."});
+    // Handle the specific Api404Error and other errors
+    if (err instanceof Api404Error) {
+      return res.status(404).json({ error: err.message });
+    } else {
+      // Sends HTTP 500 (Internal Server Error), if error 
+      res.status(500).json({err: "Internal Server Error."});
+    }
   }
 }
 
@@ -155,7 +165,7 @@ const deleteRecord = async (req, res, next) => {
 
   // Run a check to see if the ID is valid
   if (!ObjectId.isValid(id)) {
-    return res.status(400).json({ error: "Invalid ID" });
+    return res.status(400).json({ error: "Please use a valid ID" });
   }
 
   try {
@@ -165,23 +175,22 @@ const deleteRecord = async (req, res, next) => {
     // Access the accounts collection within the database
     const result = await db
       .collection("accounts")
-      .findOne({ _id: new ObjectId(id) });
+      .deleteOne({ _id: new ObjectId(id) });
 
-    if (!result) {
-      return res.status(404).json({ error: "No records available to delete. "});
-    }
-      
-    result.deleteOne({ _id: new ObjectId(id) });
-
+    // Check to see if account was deleted
     if (result.deletedCount > 0) {
       // Success response
       res.status(204).json({ message: "Record deleted successfully." });
     } else {
-      res.status(404).json({ message: "Record not found" });
+      throw new Api404Error("Not found", httpStatusCodes.NOT_FOUND, "Record not found.");
     }
   } catch (error) {
-    console.error("Error deleting record:", error);
-    res.status(500).json({ message: "Failed to delete record", error });
+    // console.error("Error deleting record:", error);
+    if (error instanceof Api404Error) {
+      res.status(error.statusCode).json({ error: error.message });
+    } else {
+      res.status(500).json({ message: "Failed to delete record", error });
+    }
   }
 };
 

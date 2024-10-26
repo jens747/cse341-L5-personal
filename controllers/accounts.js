@@ -180,7 +180,7 @@ const deleteRecord = async (req, res, next) => {
     // Check to see if account was deleted
     if (result.deletedCount > 0) {
       // Success response
-      res.status(204).json({ message: "Record deleted successfully." });
+      res.status(200).json({ message: "Record deleted successfully." });
     } else {
       throw new Api404Error("Not found", httpStatusCodes.NOT_FOUND, "Record not found.");
     }

@@ -11,6 +11,9 @@ GET http://localhost:8080/accounts/671424015a93e1e869707617
 ### 
 GET http://localhost:8080/accounts/671424015a93e1e869707618
 
+### Send OAuth request to Google
+GET http://localhost:8080/auth
+
 ### Create contact 
 POST http://localhost:8080/accounts HTTP/1.1
 content-type: application/json 
@@ -96,6 +99,7 @@ content-type: application/json
   "phone": "570-555-1222"
 }
 
+### Create contact 
 POST https://cse341-l5-personal.onrender.com/accounts/ HTTP/1.1
 content-type: application/json
 

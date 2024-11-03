@@ -12,7 +12,7 @@ passport.use(new GoogleStrategy({
   clientSecret: process.env.GOOGLE_CLIENT_SECRET, 
   // Google redirects to this endpoint in app when logged in
   // callbackURL: "http://localhost:8080/auth/google/callback"
-  callbackURL: "https://cse341-l5-personal.onrender.com/auth/google"
+  callbackURL: "https://cse341-l5-personal.onrender.com/auth/google/callback"
 }, (accessToken, refreshToken, profile, done) => {
   // Handle user profile information here
   // console.log(profile);

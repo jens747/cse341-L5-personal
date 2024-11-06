@@ -4,14 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href=""> 
+    <link rel="stylesheet" href="../public/css/style.css"> 
 </head>
 <body>
+  <header>
     <h1>Authenticated!</h1>
     <p>Welcome to the Dashboard</p>
     
     <!-- <button id="logout-button">Logout</button> -->
+    <div class="weather-alert"></div>
+    <!-- <a href="index.html">
+      <picture
+        ><img
+          src="images/logo/logo-img.webp"
+          alt="Temple Inn & Suites Logo"
+          id="logo"
+      /></picture>
+    </a> -->
+    <nav>
+      <ul class="nav-ul">
+        <li class="directory dropdown-nav">
+          <div id="grid">
+            <div class="grid-div"></div>
+            <div class="grid-div"></div>
+          </div>
+        </li>
+        <li><a class="nav-li" id="dash" href="dashboard.html">dash</a></li>
+        <li><a class="nav-li" id="schedule" href="">schedule</a></li>
+        <li><a class="nav-li" id="soap" href="">soap</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section id="dash-sec">
+      <h2>Today's Appointments</h2>
+    </section>
+    <section id="schedule-sec">
+      <h2>Schedule Appointment</h2>
+      <label for="patient">Patient: </label>
+      <select name="patient" id="patient" required>
+        <option value="" disabled selected>Select patient</option>
+      </select>
 
-    <script src=""></script>
+      <label for="date">Date: </label>
+      <input type="date" name="date" id="date" required>
+      
+      <label for="time">Appointment time: </label>
+      <input type="time" id="time" required>
+
+      <button type="button">Schedule</button>
+    </section>
+    <section id="soap-sec">
+      <h2>SOAP Notes</h2>
+    </section>
+    <div id="feedback-msg"></div>
+  </main>
+  <footer>
+
+  </footer>
+
+  <script src="../public/js/dashboard.js" type="module"></script>
 </body>
 </html>

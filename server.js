@@ -31,7 +31,9 @@ app.use(express.static("public"));
 app.use(session({
   secret: process.env.AUTH_SESSION_SECRET, 
   resave: false, 
-  saveUninitialized: true
+  saveUninitialized: true, 
+  // Added when running HTTPS
+  cookie: { secure: true }
 }));
 
 // Initialize Passport and session

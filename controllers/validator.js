@@ -57,6 +57,49 @@ const accountValidation = () => {
   ];
 }
 
+const scheduleValidation = () => {
+  return [
+    body("accountID")
+      // Make sure id exists and is not empty or falsy
+      .exists({ checkNull: true, checkFalsy: true })
+      .withMessage("Id is required.")
+      // Stops validation chain if id is missing
+      .bail()
+      .isMongoId()
+      .withMessage("Please use a valid MongoDB ID."),
+    body("scheduleDate")
+      .exists({ checkFalsy: true })
+        .withMessage("You must enter a date.")
+      .bail()
+      .isISO8601()
+        .withMessage("Please use the following format: YYYY-MM-DD.")
+      // Source: https://stackoverflow.com/questions/51480936/express-validator-how-to-validate-start-date-is-before-end-date
+      .custom((value) => {
+        const selectedDate = new Date(value);
+        const currentDate = new Date();
+        if (selectedDate < currentDate) {
+          throw new Error("Please use a date that has not past.");
+        }
+        return true;
+      }),
+    body("scheduleTime")
+      .exists({ checkFalsy: true })
+        .withMessage("Time is required.")
+      .bail()
+      // Source: https://stackoverflow.com/questions/7536755/regular-expression-for-matching-hhmm-time-format
+      .matches(/^([01]\d|2[0-3]):([0-5]\d)$/)
+        .withMessage('Invalid time format. Use HH:MM in 24-hour format.'),
+    body("notes")
+      .exists({ checkFalsy: true })
+        .withMessage("Please enter an initial comment.")
+      .bail()
+      .notEmpty()
+        .withMessage("Notes cannot be empty.")
+      .isLength({ max: 1000 })
+        .withMessage("Notes exceed the max limit of 1,000 characters.")
+  ];
+}
+
 const idValidation = () => {
   return [
     param("id")
@@ -88,7 +131,8 @@ const validate = (req, res, next) => {
 }
 
 module.exports = {
-  accountValidation,
+  accountValidation, 
+  scheduleValidation, 
   idValidation, 
   validate
 }

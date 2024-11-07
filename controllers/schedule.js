@@ -101,7 +101,7 @@ const postRecord = async (req, res, next) => {
 
 const putRecord = async (req, res, next) => {
   // Convert id from string into a MongoDB ObjectId
-  const userId = req.params.accountID;
+  const userId = req.params.id;
 
   // Test the ID to see if it is a valid MongoDB ObjectID
   if (!ObjectId.isValid(userId)) {
@@ -109,22 +109,21 @@ const putRecord = async (req, res, next) => {
   }
 
   try {
-    /* Get reference to the connectd MongoDB database 
-      instance so it can be queried */
+    // Reference the connected MongoDB database
     const db = mongodb.getDb();
 
-    // account object values are updated by req.body
-    const appointment = {
-      accountID: req.body.accountID, 
-      scheduleDate: req.body.scheduleDate, 
-      scheduleTime: req.body.scheduleTime, 
-      notes: req.body.notes
-    }
+    // schedule object values are updated by req.body
+    // const appointment = {
+    //   accountID: req.body.accountID, 
+    //   scheduleDate: req.body.scheduleDate, 
+    //   scheduleTime: req.body.scheduleTime, 
+    //   notes: req.body.notes
+    // }
     
     // Access the schedule collection within the database
     const collection = db.collection("schedule");
 
-    const record = await collection.findOne({ accountID: new ObjectId(userId) });
+    const record = await collection.findOne({ _id: new ObjectId(userId) });
 
     if (!record) {
       // return res.status(404).json({ error: "No records available to update. "});
@@ -133,7 +132,21 @@ const putRecord = async (req, res, next) => {
       
     /* Replace data in selected _id with data in contacts 
        object, returns result.modifiedCount status */
-    const result = await collection.replaceOne({ accountID: new ObjectId(userId) }, appointment);
+    // const result = await collection.replaceOne({ accountID: new ObjectId(userId) }, appointment);
+
+    // Source: https://www.mongodb.com/docs/manual/reference/method/db.collection.updateOne/
+    // Update the notes field
+    const result = await collection.updateOne(
+      {
+        _id: new ObjectId(userId)
+      }, 
+      // Use updateOne with $set operator to update notes only
+      {
+        $set: {
+          notes: req.body.notes
+        }
+      }
+    );
     
     // modifiedCount checks to see if document was modified
     if (result.modifiedCount > 0) {

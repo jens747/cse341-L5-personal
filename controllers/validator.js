@@ -100,6 +100,19 @@ const scheduleValidation = () => {
   ];
 }
 
+const noteValidation = () => {
+  return [
+    body("notes")
+      .exists({ checkFalsy: true })
+        .withMessage("Please enter an initial comment.")
+      .bail()
+      .notEmpty()
+        .withMessage("Notes cannot be empty.")
+      .isLength({ max: 1000 })
+        .withMessage("Notes exceed the max limit of 1,000 characters.")
+  ];
+}
+
 const idValidation = () => {
   return [
     param("id")
@@ -133,6 +146,7 @@ const validate = (req, res, next) => {
 module.exports = {
   accountValidation, 
   scheduleValidation, 
+  noteValidation, 
   idValidation, 
   validate
 }

@@ -21,7 +21,8 @@ routes.post("/", scheduleValidation(), validate,
    routeSchedules.postRecord);
 
 // routes.put("/put/:id", routeSchedules.putRecord);
-routes.put("/:id", noteValidation(), validate, routeSchedules.putRecord);
+routes.put("/:id", scheduleValidation(), validate, routeSchedules.putRecord);
+// routes.put("/:id", noteValidation(), validate, routeSchedules.putRecord);
 
 // routes.delete("/delete/:id", routeSchedules.deleteRecord);
 routes.delete("/:id", routeSchedules.deleteRecord);

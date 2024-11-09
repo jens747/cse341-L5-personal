@@ -114,9 +114,9 @@ const putRecord = async (req, res, next) => {
 
     // schedule object values are updated by req.body
     const appointment = {
-      accountID: req.body.accountID, 
-      scheduleDate: req.body.scheduleDate, 
-      scheduleTime: req.body.scheduleTime, 
+      // accountID: req.body.accountID, 
+      // scheduleDate: req.body.scheduleDate, 
+      // scheduleTime: req.body.scheduleTime, 
       notes: req.body.notes
     }
     
@@ -132,21 +132,21 @@ const putRecord = async (req, res, next) => {
       
     /* Replace data in selected _id with data in contacts 
        object, returns result.modifiedCount status */
-    const result = await collection.replaceOne({ _id: new ObjectId(userId) }, appointment);
+    // const result = await collection.replaceOne({ _id: new ObjectId(userId) }, appointment);
 
     // Source: https://www.mongodb.com/docs/manual/reference/method/db.collection.updateOne/
     // Update the notes field
-    // const result = await collection.updateOne(
-    //   {
-    //     _id: new ObjectId(userId)
-    //   }, 
-    //   // Use updateOne with $set operator to update notes only
-    //   {
-    //     $set: {
-    //       notes: req.body.notes
-    //     }
-    //   }
-    // );
+    const result = await collection.updateOne(
+      {
+        _id: new ObjectId(userId)
+      }, 
+      // Use updateOne with $set operator to update notes only
+      {
+        $set: {
+          notes: req.body.notes
+        }
+      }
+    );
     
     // modifiedCount checks to see if document was modified
     if (result.modifiedCount > 0) {

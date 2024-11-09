@@ -7,7 +7,7 @@ const routes = express.Router();
 const routeSchedules = require("../controllers/schedule");
 
 // Import validator controller module
-const { scheduleValidation, idValidation, validate } = require("../controllers/validator");
+const { scheduleValidation, noteValidation, idValidation, validate } = require("../controllers/validator");
 
 // Set up a GET request, w/a route to the app root
 routes.get("/", routeSchedules.getAllRecords);
@@ -21,8 +21,8 @@ routes.post("/", scheduleValidation(), validate,
    routeSchedules.postRecord);
 
 // routes.put("/put/:id", routeSchedules.putRecord);
-routes.put("/:id", scheduleValidation(), validate, routeSchedules.putRecord);
-// routes.put("/:id", noteValidation(), validate, routeSchedules.putRecord);
+// routes.put("/:id", scheduleValidation(), validate, routeSchedules.putRecord);
+routes.put("/:id", noteValidation(), validate, routeSchedules.putRecord);
 
 // routes.delete("/delete/:id", routeSchedules.deleteRecord);
 routes.delete("/:id", routeSchedules.deleteRecord);

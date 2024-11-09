@@ -280,7 +280,15 @@
             "schema": {
               "type": "object",
               "properties": {
-                
+                "accountID": {
+                  "example": "any"
+                },
+                "scheduleDate": {
+                  "example": "any"
+                },
+                "scheduleTime": {
+                  "example": "any"
+                },
                 "notes": {
                   "example": "any"
                 }

@@ -3,7 +3,7 @@ const router = require("express").Router();
 const swaggerUi = require("swagger-ui-express");
 // Import Swagger JSON module
 const swaggerDocument = require("../swagger.json");
-const swaggerSpec = require("../config/swaggerConfig");
+// const swaggerSpec = require("../config/swaggerConfig");
 
 // Set up Swagger Express API
 router.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));

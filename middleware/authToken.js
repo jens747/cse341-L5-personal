@@ -5,7 +5,7 @@ dotenv.config();
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID); 
 
 // Import node-fetch module
-const fetch = requier("node-fetch");
+const fetch = require("node-fetch");
 
 async function ensureAuthToken(req, res, next) {
   const authHeader = req.headers.authorization;

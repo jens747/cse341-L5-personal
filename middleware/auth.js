@@ -7,4 +7,4 @@ function ensureAuthentication(req, res, next) {
   res.redirect("/"); 
 }
 
-module.exports = ensureAuthentication;
+module.exports = { ensureAuthentication };

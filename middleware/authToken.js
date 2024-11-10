@@ -6,6 +6,8 @@ const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 async function ensureAuthToken(req, res, next) {
   const authHeader = req.headers.authorization;
+  console.log("Auth-Header");
+  console.log(authHeader);
 
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
     return res.status(401).json({ message: "Unauthorized: Token is missing or invalid." });

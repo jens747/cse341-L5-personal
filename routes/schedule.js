@@ -14,7 +14,7 @@ const { ensureAuthentication } = require("../middleware/auth");
 
 // Set up a GET request, w/a route to the app root
 /**
- * 
+ * @swagger
  * /schedule:
  *   get:
  *     summary: Get all scheduled appointments
@@ -26,12 +26,12 @@ const { ensureAuthentication } = require("../middleware/auth");
  *       401:
  *         description: Unauthorized
  */
-routes.get("/", routeSchedules.getAllRecords);
+routes.get("/", ensureAuthentication, routeSchedules.getAllRecords);
 
 /* Another get request that requires :id parameters 
    as part of the request. */
 /**
- * 
+ * @swagger
  * /schedule/{id}:
  *   get:
  *     summary: Get a specific appointment by ID
@@ -56,7 +56,7 @@ routes.get("/:id", idValidation(), validate, ensureAuthentication, routeSchedule
 
 // routes.post("/add", routeSchedules.postRecord);
 /**
- * 
+ * @swagger
  * /schedule:
  *   post:
  *     summary: Create a new appointment
@@ -87,7 +87,7 @@ routes.post("/", scheduleValidation(), validate, ensureAuthentication,
 
 // routes.put("/put/:id", routeSchedules.putRecord);
 /**
- * 
+ * @swagger
  * /schedule/{id}:
  *   put:
  *     summary: Update an existing appointment
@@ -127,7 +127,7 @@ routes.put("/:id", scheduleValidation(), validate, ensureAuthentication, routeSc
 
 // routes.delete("/delete/:id", routeSchedules.deleteRecord);
 /**
- * 
+ * @swagger
  * /schedule/{id}:
  *   delete:
  *     summary: Delete an appointment

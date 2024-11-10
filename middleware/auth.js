@@ -1,15 +1,15 @@
 // Function to test whether user has authenticated
-const ensureAuthentication = (req, res, next) => {
-  if (req.isAuthenticated && req.isAuthenticated()) {
-      return next();
-  }
+// const ensureAuthentication = (req, res, next) => {
+//   if (req.isAuthenticated && req.isAuthenticated()) {
+//       return next();
+//   }
   // Redirect to login if not authenticated
   // res.redirect("/"); 
   // Return a 401 Unauthorized error if not authenticated
-  res.status(401).json({ message: "Unauthorized: You must log in to access this resource." });
-}
+//   res.status(401).json({ message: "Unauthorized: You must log in to access this resource." });
+// }
 
-const ensureAuthToken = (req, res, next) => {
+const ensureAuthentication = (req, res, next) => {
   const authHeader = req.headers.authorization;
   console.log(`Auth-Header: ${authHeader}`);
 
@@ -33,4 +33,4 @@ const ensureAuthToken = (req, res, next) => {
   //   });
 }
 
-module.exports = { ensureAuthentication, ensureAuthToken };
+module.exports = ensureAuthentication;

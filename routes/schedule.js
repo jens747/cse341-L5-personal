@@ -14,7 +14,7 @@ const routeSchedules = require("../controllers/schedule");
 const { scheduleValidation, noteValidation, idValidation, validate } = require("../controllers/validator");
 
 // Import authentication checker
-const { ensureAuthentication, ensureAuthToken } = require("../middleware/auth");
+const ensureAuthentication = require("../middleware/auth");
 // console.log('ensureAuthentication:', ensureAuthentication);
 
 // Set up a GET request, w/a route to the app root
@@ -31,7 +31,7 @@ const { ensureAuthentication, ensureAuthToken } = require("../middleware/auth");
  *       401:
  *         description: Unauthorized
  */
-routes.get("/", ensureAuthToken, routeSchedules.getAllRecords);
+routes.get("/", ensureAuthentication, routeSchedules.getAllRecords);
 
 /* Another get request that requires :id parameters 
    as part of the request. */

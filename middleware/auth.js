@@ -1,5 +1,5 @@
 // Function to test whether user has authenticated
-export function ensureAuthentication(req, res, next) {
+function ensureAuthentication(req, res, next) {
   if (req.isAuthenticated()) {
       return next();
   }

@@ -10,30 +10,25 @@
   "schemes": [
     "https"
   ], 
-  "components": {
-    "securitySchemes": {
-      "googleOAuth": {
-        "type": "oauth2", 
-        "description": "Setting up OAuth2 for access through Google & Swagger", 
-        "flows": {
-          "implicit": {
-            "authorizationUrl": "https://accounts.google.com/o/oauth2/auth", 
-            "scopes": {
-              "read": "read entries", 
-              "write": "modify entries"
-            }
-          }
-        }         
+  "securityDefinitions": {
+    "googleOAuth": {
+      "type": "oauth2", 
+      "description": "Setting up OAuth2 for access through Google & Swagger",
+      "flow": "implicit",  
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+      "scopes": {
+        "read": "read entries",
+        "write": "modify entries"
       }
     }
   },
   "paths": {
     "/api-docs": {
       "get": {
-        "description": "",
+        "description": "Fetch API documentation",
         "responses": {
           "default": {
-            "description": ""
+            "description": "Default response"
           }
         }
       }

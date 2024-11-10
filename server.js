@@ -7,7 +7,7 @@ const httpLogger = require("./loggers/httpLogger");
 // Set up authentication
 const session = require("express-session");
 // Import Passport.js config file
-const passport = require("./config/passport");
+// const passport = require("./config/passport");
 // Import authentication routes
 const auth = require("./routes/auth");
 
@@ -37,8 +37,8 @@ app.use(session({
 }));
 
 // Initialize Passport and session
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 // Use authentication routes
 app.use(auth);

@@ -17,8 +17,8 @@
       "flow": "implicit",  
       "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
       "scopes": {
-        "read": "read entries",
-        "write": "modify entries"
+        "https://www.googleapis.com/auth/userinfo.profile": "Access user profile",
+        "https://www.googleapis.com/auth/userinfo.email": "Access user email"
       }
     }
   },
@@ -208,7 +208,7 @@
         ],
         "security": [
           {
-            "googleOAuth": ["read"]
+            "googleOAuth": ["https://www.googleapis.com/auth/userinfo.profile"]
           }
         ],
         "responses": {
@@ -227,7 +227,7 @@
         ],
         "security": [
           {
-            "googleOAuth": ["read", "write"]
+            "googleOAuth": ["https://www.googleapis.com/auth/userinfo.profile"]
           }
         ],
         "parameters": [
@@ -272,7 +272,7 @@
         ],
         "security": [
           {
-            "googleOAuth": ["read"]
+            "googleOAuth": ["https://www.googleapis.com/auth/userinfo.profile"]
           }
         ],
         "parameters": [
@@ -299,7 +299,7 @@
         ],
         "security": [
           {
-            "googleOAuth": ["read", "write"]
+            "googleOAuth": ["https://www.googleapis.com/auth/userinfo.profile"]
           }
         ],
         "parameters": [
@@ -347,7 +347,7 @@
         ],
         "security": [
           {
-            "googleOAuth": ["read", "write"]
+            "googleOAuth": ["https://www.googleapis.com/auth/userinfo.profile"]
           }
         ],
         "parameters": [

@@ -8,7 +8,8 @@ exports.googleLogin = passport.authenticate("google", {
 
 exports.googleCallback = passport.authenticate("google", {
   failureRedirect: "/", 
-  successRedirect: "/dashboard"
+  // successRedirect: "/dashboard"
+  successRedirect: "/schedule"
 });
 
 exports.logout = (req, res) => {

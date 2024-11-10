@@ -6,6 +6,10 @@ const routes = express.Router();
 /* Import the schedule controller module */
 const routeSchedules = require("../controllers/schedule");
 
+console.log('routeSchedules:', routeSchedules);
+console.log('routeSchedules.getAllRecords:', routeSchedules.getAllRecords);
+
+
 // Import validator controller module
 const { scheduleValidation, noteValidation, idValidation, validate } = require("../controllers/validator");
 

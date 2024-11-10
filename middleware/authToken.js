@@ -8,6 +8,8 @@ async function ensureAuthToken(req, res, next) {
   const authHeader = req.headers.authorization;
   console.log("Auth-Header");
   console.log(authHeader);
+  console.log('Request Headers:', req.headers);
+
 
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
     return res.status(401).json({ message: "Unauthorized: Token is missing or invalid." });
@@ -20,7 +22,7 @@ async function ensureAuthToken(req, res, next) {
       idToken: token,
       audience: process.env.GOOGLE_CLIENT_ID
     });
-    const payload = ticket.getPayload(); // You can access user info here if needed
+    const payload = ticket.getPayload(); 
 
     // Token is valid, attach user info to the request object if needed
     req.user = payload;

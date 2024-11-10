@@ -14,7 +14,8 @@ console.log('routeSchedules.getAllRecords:', routeSchedules.getAllRecords);
 const { scheduleValidation, noteValidation, idValidation, validate } = require("../controllers/validator");
 
 // Import authentication checker
-const { ensureAuthentication } = require("../middleware/auth");
+const ensureAuthentication = require("../middleware/auth");
+console.log('ensureAuthentication:', ensureAuthentication);
 
 // Set up a GET request, w/a route to the app root
 /**

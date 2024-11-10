@@ -14,6 +14,6 @@ exports.googleCallback = passport.authenticate("google", {
 
 exports.logout = (req, res) => {
   req.logout(() => {
-    req.redirect("/");
+    res.redirect("/");
   });
 };

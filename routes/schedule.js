@@ -57,7 +57,7 @@ routes.get("/", ensureAuthentication, routeSchedules.getAllRecords);
  *       401:
  *         description: Unauthorized
  */
-routes.get("/:id", idValidation(), validate, ensureAuthentication, routeSchedules.getRecordById);
+routes.get("/:id", idValidation(), validate, routeSchedules.getRecordById);
 
 // routes.post("/add", routeSchedules.postRecord);
 /**
@@ -87,7 +87,7 @@ routes.get("/:id", idValidation(), validate, ensureAuthentication, routeSchedule
  *       401:
  *         description: Unauthorized
  */
-routes.post("/", scheduleValidation(), validate, ensureAuthentication, 
+routes.post("/", scheduleValidation(), validate, 
    routeSchedules.postRecord);
 
 // routes.put("/put/:id", routeSchedules.putRecord);
@@ -127,7 +127,7 @@ routes.post("/", scheduleValidation(), validate, ensureAuthentication,
  *       401:
  *         description: Unauthorized
  */
-routes.put("/:id", scheduleValidation(), validate, ensureAuthentication, routeSchedules.putRecord);
+routes.put("/:id", scheduleValidation(), validate, routeSchedules.putRecord);
 // routes.put("/:id", noteValidation(), validate, routeSchedules.putRecord);
 
 // routes.delete("/delete/:id", routeSchedules.deleteRecord);
@@ -153,7 +153,7 @@ routes.put("/:id", scheduleValidation(), validate, ensureAuthentication, routeSc
  *       401:
  *         description: Unauthorized
  */
-routes.delete("/:id", ensureAuthentication, routeSchedules.deleteRecord);
+routes.delete("/:id", routeSchedules.deleteRecord);
 
 // Export the routes object to be used by the app elsewhere
 module.exports = routes;

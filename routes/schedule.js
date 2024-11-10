@@ -6,16 +6,16 @@ const routes = express.Router();
 /* Import the schedule controller module */
 const routeSchedules = require("../controllers/schedule");
 
-console.log('routeSchedules:', routeSchedules);
-console.log('routeSchedules.getAllRecords:', routeSchedules.getAllRecords);
+// console.log('routeSchedules:', routeSchedules);
+// console.log('routeSchedules.getAllRecords:', routeSchedules.getAllRecords);
 
 
 // Import validator controller module
 const { scheduleValidation, noteValidation, idValidation, validate } = require("../controllers/validator");
 
 // Import authentication checker
-const ensureAuthentication = require("../middleware/auth");
-console.log('ensureAuthentication:', ensureAuthentication);
+const { ensureAuthentication, ensureAuthToken } = require("../middleware/auth");
+// console.log('ensureAuthentication:', ensureAuthentication);
 
 // Set up a GET request, w/a route to the app root
 /**
@@ -31,7 +31,7 @@ console.log('ensureAuthentication:', ensureAuthentication);
  *       401:
  *         description: Unauthorized
  */
-routes.get("/", ensureAuthentication, routeSchedules.getAllRecords);
+routes.get("/", ensureAuthToken, routeSchedules.getAllRecords);
 
 /* Another get request that requires :id parameters 
    as part of the request. */

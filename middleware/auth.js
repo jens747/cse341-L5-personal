@@ -1,5 +1,5 @@
 // Function to test whether user has authenticated
-function ensureAuthentication(req, res, next) {
+const ensureAuthentication = (req, res, next) => {
   if (req.isAuthenticated && req.isAuthenticated()) {
       return next();
   }
@@ -9,7 +9,7 @@ function ensureAuthentication(req, res, next) {
   res.status(401).json({ message: "Unauthorized: You must log in to access this resource." });
 }
 
-function ensureAuthToken(req, res, next) {
+const ensureAuthToken = (req, res, next) => {
   const authHeader = req.headers.authorization;
   console.log(`Auth-Header: ${authHeader}`);
 

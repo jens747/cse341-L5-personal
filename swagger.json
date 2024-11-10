@@ -208,7 +208,7 @@
         ],
         "security": [
           {
-            "OAuth2": ["read"]
+            "googleOAuth": ["read"]
           }
         ],
         "responses": {
@@ -227,7 +227,7 @@
         ],
         "security": [
           {
-            "OAuth2": ["read", "write"]
+            "googleOAuth": ["read", "write"]
           }
         ],
         "parameters": [
@@ -272,7 +272,7 @@
         ],
         "security": [
           {
-            "OAuth2": ["read"]
+            "googleOAuth": ["read"]
           }
         ],
         "parameters": [
@@ -299,7 +299,7 @@
         ],
         "security": [
           {
-            "OAuth2": ["read", "write"]
+            "googleOAuth": ["read", "write"]
           }
         ],
         "parameters": [
@@ -347,7 +347,7 @@
         ],
         "security": [
           {
-            "OAuth2": ["read", "write"]
+            "googleOAuth": ["read", "write"]
           }
         ],
         "parameters": [

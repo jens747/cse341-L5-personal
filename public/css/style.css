@@ -1,4 +1,165 @@
-/* https://coolors.co/d6f9dd-f08080-f4978e-60695c-c5d6d8 */
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Luckiest+Guy&family=Ubuntu+Condensed&display=swap');
+:root {
+  /* --font-body: Arial, Helvetica, sans-serif; */
+  /* --font-headline: Haettenschweiler, "Arial Narrow Bold", sans-serif; */
+  /* colors */
+  /* Source: https://coolors.co/fffffa-0d5c63-ff686b-ffbf00-30292f */
+  /* Source: https://coolors.co/74121d-0d5c63-ff686b-ffbf00-31e981 */
+  /* Source: https://coolors.co/23022e-0d5c63-ff686b-ffbf00-31e981 */
+  /* Source: https://coolors.co/6cd4ff-0d5c63-ff686b-ffbf00-31e981 */
+  /* --primary-color: #0d5c63;
+  --secondary-color: #ff686b;
+  --tertiary-color: #ffbf00;
+  --light-color: #fffffa;
+  --dark-color: #30292f; */
+
+  
+  /* Source: https://coolors.co/d6f9dd-f08080-f4978e-60695c-c5d6d8 */
+  --primary-color: #60695c;
+  --secondary-color: #f08080;
+  --tertiary-color: #f4978e;
+  --light-color: #d6f9dd;
+  --dark-color: #30292f;
+  --agray-color: #8e888e;
+  --bgray-color: #8e8e8e;
+  --cgray-color: #c5d6d8;
+  --awhite-color: #fffffa;
+  --bwhite-color: #F3F1E0;
+  --blue-color: #6cd4ff;
+  --green-color: #31e981;
+  /* Source: https://www.css-gradient.com/colors/whitesmoke */
+  --smoke1: #F0F0F0;
+  --smoke2: #EBEBEB;
+  --smoke3: #E6E6E6;
+  --smoke4: #E1E1E1;
+  --smoke5: #DBDBDB;
+  --smoke6: #D6D6D6;
+  --smoke7: #D1D1D1;
+  --smoke8: #ACACAC;
+  --smoke9: #888888;
+  /* Source: https://www.google.com/search?q=google+logo+color+code&sca_esv=690c000121490280&udm=2&biw=1342&bih=563&ei=_Yo_Z6aJCanH0PEP3tCgkAI&oq=google+logo+color&gs_lp=EgNpbWciEWdvb2dsZSBsb2dvIGNvbG9yKgIIATIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgARIqD9QhRNYmS9wAngAkAEAmAGwAaAB9wSqAQM1LjG4AQPIAQD4AQGYAgigAqEFwgINEAAYgAQYsQMYQxiKBcICBhAAGAcYHsICCxAAGIAEGLEDGIMBwgIIEAAYgAQYsQPCAgoQABiABBhDGIoFmAMAiAYBkgcDNi4yoAeLIA&sclient=img */
+  --google-red: #ea4335;
+  --google-blue: #4285f4;
+  --google-yellow: #fbbc05;
+  --google-green: #34a853;
+
+
+  /* sizes */
+  --font-base: 18px;
+  --small-font: 0.8em;
+  --large-font: 1.2em;
+  --xl-font: 1.4em;
+  --xxl-font: 1.6em;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Ubuntu Condensed", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+
+  font-size: 10vw;
+  text-align: center;
+  background: whitesmoke;
+  background: var(--smoke1);
+  color: whitesmoke;
+  text-shadow: 1px 1px 4px #bbb, -1px -1px 6px #fff, 3px 3px 4px rgba(0, 0, 0, 0.2);
+
+  opacity: 0;
+  transition: opacity 1.8s 1s;
+}
+
+h1 {
+  /* font-size: 28vw; */
+  /* margin: 0; */
+}
+
+@keyframes bounce {
+  0%, 50% {
+    /* transform: translateY(0) scaleY(1);  */
+    transform: translate(0);
+    animation-timing-function: ease-in;
+  }
+  25% {
+    transform: translateY(-6px); 
+    animation-timing-function: ease-in-out;
+  }
+  100% {
+    /* transform: scaleY(.8); */
+    animation-timing-function: ease-in;
+  }
+}
+
+button {
+  color: whitesmoke;
+  background: whitesmoke;
+  background: var(--smoke1);
+  text-shadow: 1px 1px 4px #bbb, -1px -1px 6px #fff, 3px 3px 4px rgba(0, 0, 0, 0.2);
+  font-size: 4vw;
+  border: none;
+  /* display at bottom center */
+  position: absolute;
+  bottom: 16px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  transition: color .5s;
+}
+
+button:hover {
+  cursor: pointer;
+  color: var(--primary-color);
+}
+
+button .styleGoogle {
+  display: inline-block;
+}
+
+.styleGoogle {
+  /* padding-left: 1px; */
+  padding-top: 1px;
+  transition: color 0s;
+}
+
+button .styleGoogle:nth-child(1) {
+  display: inline-block;
+  padding-left: 6px;
+}
+
+button:hover .styleGoogle:nth-child(1) {
+  color: var(--google-blue);
+  padding-left: 6px;
+  animation: bounce .5s;
+}
+
+button:hover .styleGoogle:nth-child(2) {
+  color: var(--google-red);
+  animation: bounce .5s .1s;
+}
+
+button:hover .styleGoogle:nth-child(3) {
+  color: var(--google-yellow);
+  animation: bounce .5s .2s;
+}
+
+button:hover .styleGoogle:nth-child(4) {
+  color: var(--google-blue);
+  animation: bounce .5s .3s;
+}
+
+button:hover .styleGoogle:nth-child(5) {
+  color: var(--google-green);
+  animation: bounce .5s .4s;
+}
+
+button:hover .styleGoogle:nth-child(6) {
+  color: var(--google-red);
+  animation: bounce .5s .5s;
+}
+
 nav {
   position: absolute;
   right: 5px;
